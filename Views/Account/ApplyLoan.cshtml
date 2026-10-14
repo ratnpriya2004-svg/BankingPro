@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewData["Title"] = "Apply Personal Loan";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold mb-4">💳 Personal Loan</h1>
+                <p class="lead text-muted">Instant approval up to <strong>₹25 Lakhs</strong> at <strong>9.99% p.a.</strong></p>
+            </div>
+
+            <!-- Loan Calculator -->
+            <div class="card shadow-lg border-0 mb-5">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0"><i class="bi bi-calculator me-2"></i>EMI Calculator</h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Loan Amount (₹)</label>
+                            <input type="range" class="form-range" id="loanAmount" min="50000" max="2500000" value="500000">
+                            <div id="amountValue" class="fw-bold fs-5 text-primary">₹5,00,000</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Interest Rate</label>
+                            <input type="range" class="form-range" id="interestRate" min="9" max="15" step="0.1" value="9.99">
+                            <div id="rateValue" class="fw-bold fs-5 text-primary">9.99% p.a.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Tenure (Months)</label>
+                            <input type="range" class="form-range" id="tenure" min="12" max="60" value="24">
+                            <div id="tenureValue" class="fw-bold fs-5 text-primary">24 months</div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <div class="h4 text-primary fw-bold" id="emiValue">₹22,600</div>
+                            <div class="text-muted">Monthly EMI</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="h4 text-success fw-bold" id="totalValue">₹5,42,400</div>
+                            <div class="text-muted">Total Payable</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="h4 text-info fw-bold" id="interestValue">₹42,400</div>
+                            <div class="text-muted">Total Interest</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Application Form -->
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="bi bi-file-earmark-check me-2"></i>Apply Now - 3 Minutes</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="SubmitLoanApplication">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Full Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Mobile Number</label>
+                                <input type="tel" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Email</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Loan Amount</label>
+                                <input type="number" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">Apply Now →</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let emi = 0;
+function calculateEMI() {
+    const principal = parseFloat(document.getElementById('loanAmount').value);
+    const rate = parseFloat(document.getElementById('interestRate').value) / 1200;
+    const tenure = parseFloat(document.getElementById('tenure').value);
+
+    emi = principal * rate * Math.pow(1 + rate, tenure) / (Math.pow(1 + rate, tenure) - 1);
+    const total = emi * tenure;
+    const interest = total - principal;
+
+    document.getElementById('emiValue').textContent = `₹${emi.toLocaleString('en-IN', {maximumFractionDigits: 0})}`;
+    document.getElementById('totalValue').textContent = `₹${total.toLocaleString('en-IN', {maximumFractionDigits: 0})}`;
+    document.getElementById('interestValue').textContent = `₹${interest.toLocaleString('en-IN', {maximumFractionDigits: 0})}`;
+}
+</script>

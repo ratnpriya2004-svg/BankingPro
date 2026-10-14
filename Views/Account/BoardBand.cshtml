@@ -1,0 +1,60 @@
+﻿<div class="container-fluid py-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <!-- HEADER -->
+            <div class="text-center mb-5">
+                <div class="solid-btn p-5 mb-4 mx-auto" style="max-width: 500px; background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                    <i class="bi bi-wifi fs-1 mb-3"></i>
+                    <h2 class="fw-bold text-white mb-2">📡 Broadband Bill</h2>
+                    <small class="text-white-50">Airtel • Jio Fiber • BSNL</small>
+                </div>
+            </div>
+
+            <!-- FORM -->
+            <div class="transparent-card p-5">
+                <form asp-action="BroadbandBill" method="post">
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-white fs-5 mb-3">Account Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-purple bg-opacity-20">
+                                <i class="bi bi-wifi"></i>
+                            </span>
+                            <input name="accountNumber" class="form-control bg-transparent text-white"
+                                   placeholder="Enter Account No." required>
+                            <button type="button" class="btn btn-outline-purple">
+                                <i class="bi bi-search"></i> Fetch
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-white fs-5 mb-3">Plan Type</label>
+                        <select name="planType" class="form-select bg-transparent text-white">
+                            <option>100 Mbps Unlimited</option>
+                            <option>200 Mbps Unlimited</option>
+                            <option>1 Gbps Gaming</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-white fs-5 mb-3">Bill Amount</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-success bg-opacity-20 fs-5">₹</span>
+                            <input name="amount" type="number" class="form-control bg-transparent text-white fs-4 text-end"
+                                   placeholder="1,099" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-purple btn-lg w-100 fw-bold py-4 fs-4 mb-4">
+                        <i class="bi bi-credit-card me-2"></i>Pay Broadband Bill
+                    </button>
+
+                    <a href="/Account/BillPayments" class="btn btn-outline-light w-100 py-3">
+                        <i class="bi bi-arrow-left me-2"></i>← Back to Bills
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

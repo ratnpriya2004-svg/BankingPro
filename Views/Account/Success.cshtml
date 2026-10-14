@@ -1,0 +1,151 @@
+﻿@model dynamic
+<div class="container py-5 text-center">
+    <!-- Success Animation -->
+    <div class="mb-5">
+        <div class="success-animation">
+            <i class="bi bi-check-circle-fill fs-1 text-success mb-4" style="font-size: 5rem;"></i>
+            <div class="checkmark-circle">
+                <svg viewBox="0 0 66 66">
+                    <circle cx="33" cy="33" r="30" fill="none" stroke="#10b981" stroke-width="6" stroke-linecap="round" stroke-dasharray="188" stroke-dashoffset="187" />
+                    <polyline path="M18,34 L27,45 L48,23" fill="none" stroke="#10b981" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="47" stroke-dashoffset="46" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Success Message -->
+    @if(TempData["Success"] != null)
+    {
+    <h1 class="display-3 fw-bold text-success mb-4">@TempData["Success"]</h1>
+    <p class="lead text-success mb-5">Your transaction has been processed successfully!</p>
+    }
+    else
+    {
+    <h1 class="display-3 fw-bold text-success mb-4">✅ Request Successful!</h1>
+    <p class="lead text-success mb-5">Your application/form has been submitted successfully.</p>
+    }
+
+    <!-- Transaction Details -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-primary mb-3"><i class="bi bi-receipt me-2"></i>Transaction Summary</h5>
+                    <div class="row text-start">
+                        <div class="col-md-6">
+                            <small class="text-muted">Transaction ID:</small>
+                            <div class="h6 fw-bold">#TXN@(new Random().Next(100000, 999999))</div>
+                        </div>
+                        <div class="col-md-6">
+                            <small class="text-muted">Date & Time:</small>
+                            <div class="h6 fw-bold">@DateTime.Now.ToString("dd MMM yyyy, hh:mm tt")</div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="col-md-4 text-success">
+                            <h4>✅ Status</h4>
+                            <span class="badge bg-success fs-6 px-3 py-2">Completed</span>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Reference No.</h5>
+                            <div class="h6 fw-bold text-primary">BP-REF-@DateTime.Now.Ticks</div>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Support</h5>
+                            <a href="tel:+918800000000" class="btn btn-outline-success btn-lg w-100">
+                                <i class="bi bi-telephone me-2"></i>1800-XXX-XXXX
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Next Actions -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-3">
+            <a asp-action="Dashboard" class="btn btn-primary btn-lg w-100 py-4">
+                <i class="bi bi-house-door fs-4 d-block mb-2"></i>Back to Dashboard
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-action="AccountStatement" class="btn btn-outline-primary btn-lg w-100 py-4">
+                <i class="bi bi-file-earmark-text fs-4 d-block mb-2"></i>View Statement
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-action="BillPayments" class="btn btn-success btn-lg w-100 py-4">
+                <i class="bi bi-receipt fs-4 d-block mb-2"></i>Pay Another Bill
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-action="TransferMoney" class="btn btn-info btn-lg w-100 py-4">
+                <i class="bi bi-arrow-left-right fs-4 d-block mb-2"></i>New Transfer
+            </a>
+        </div>
+    </div>
+
+    <!-- Security Assurance -->
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="alert alert-success border-0 shadow-sm">
+                <i class="bi bi-shield-check me-2"></i>
+                <strong>🔐 100% Secure:</strong> Your transaction is protected with bank-grade 256-bit SSL encryption.
+                Funds will reflect in 2-5 minutes. No action required.
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .success-animation {
+        position: relative;
+    }
+
+    .checkmark-circle svg {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+        display: block;
+        animation: checkmark 0.6s ease both;
+    }
+
+    @@keyframes checkmark {
+        0% {
+            transform: scale(0);
+            stroke-dashoffset: 187;
+        }
+
+        100% {
+            transform: scale(1);
+            stroke-dashoffset: 0;
+        }
+    }
+
+    .btn-lg i {
+        transition: all 0.3s ease;
+    }
+
+    .btn:hover i {
+        transform: scale(1.2);
+    }
+
+    .card {
+        backdrop-filter: blur(10px);
+        background: rgba(255,255,255,0.95);
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Animation trigger
+    const svg = document.querySelector('.checkmark-circle svg');
+    if (svg) {
+        setTimeout(() => {
+            svg.style.animationPlayState = 'running';
+        }, 500);
+    }
+});
+</script>

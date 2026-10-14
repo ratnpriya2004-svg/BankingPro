@@ -1,0 +1,166 @@
+<div class="bank-bg-overlay"></div>
+<div class="container py-5 min-vh-100">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <!-- HEADER -->
+            <div class="text-center mb-6">
+                <i class="bi bi-gear display-3 text-purple mb-4"></i>
+                <h1 class="text-white fw-bold fs-1">Settings</h1>
+                <div class="project-transparent px-5 py-2 d-inline-block">
+                    Account: @ViewBag.AccountNumber
+                </div>
+            </div>
+
+            <!-- SETTINGS TABS -->
+            <div class="row g-4 mb-6">
+                <!-- PERSONAL INFO -->
+                <div class="col-lg-6">
+                    <div class="settings-card">
+                        <h5 class="text-white mb-4">
+                            <i class="bi bi-person me-2 text-purple"></i>Personal Information
+                        </h5>
+                        <div class="setting-item">
+                            <label class="text-white-50">Full Name</label>
+                            <div class="setting-value">@ViewBag.Name</div>
+                        </div>
+                        <div class="setting-item">
+                            <label class="text-white-50">Email</label>
+                            <div class="setting-value">@ViewBag.Email</div>
+                        </div>
+                        <div class="setting-item">
+                            <label class="text-white-50">Phone</label>
+                            <input type="tel" class="form-control form-control-lg" placeholder="+91 88888 88888" value="+91 88888 88888">
+                        </div>
+                        <a href="#" class="btn btn-purple w-100 mt-3 py-2">Update Profile</a>
+                    </div>
+                </div>
+
+                <!-- SECURITY -->
+                <div class="col-lg-6">
+                    <div class="settings-card">
+                        <h5 class="text-white mb-4">
+                            <i class="bi bi-shield-lock me-2 text-danger"></i>Security
+                        </h5>
+                        <div class="setting-item">
+                            <label class="text-white-50">Password</label>
+                            <button class="btn btn-outline-danger w-100 text-start py-2">
+                                <i class="bi bi-eye-slash me-2"></i>Change Password
+                            </button>
+                        </div>
+                        <div class="setting-item">
+                            <label class="text-white-50">2FA</label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="twoFaSwitch">
+                                <label class="form-check-label text-white" for="twoFaSwitch">Enable 2FA</label>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-outline-light w-100 mt-2 py-2">Session Management</a>
+                    </div>
+                </div>
+
+                <!-- NOTIFICATIONS -->
+                <div class="col-lg-6">
+                    <div class="settings-card">
+                        <h5 class="text-white mb-4">
+                            <i class="bi bi-bell me-2 text-warning"></i>Notifications
+                        </h5>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="emailNotify" checked>
+                            <label class="form-check-label text-white" for="emailNotify">Email Notifications</label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="smsNotify" checked>
+                            <label class="form-check-label text-white" for="smsNotify">SMS Alerts</label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="appNotify">
+                            <label class="form-check-label text-white" for="appNotify">App Push</label>
+                        </div>
+                        <button class="btn btn-warning w-100 py-2">Save Preferences</button>
+                    </div>
+                </div>
+
+                <!-- PREFERENCES -->
+                <div class="col-lg-6">
+                    <div class="settings-card">
+                        <h5 class="text-white mb-4">
+                            <i class="bi bi-gear-fill me-2 text-info"></i>Preferences
+                        </h5>
+                        <div class="setting-item">
+                            <label class="text-white-50">Theme</label>
+                            <select class="form-select form-select-lg" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: white;">
+                                <option>Dark</option>
+                                <option>Light</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label class="text-white-50">Language</label>
+                            <select class="form-select form-select-lg" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: white;">
+                                <option>English</option>
+                                <option>Hindi</option>
+                            </select>
+                        </div>
+                        <a href="#" class="btn btn-info w-100 mt-2 py-2">Save Settings</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="/Account/Dashboard" class="btn btn-outline-light btn-lg px-5 py-3">
+                    <i class="bi bi-house-door me-2"></i>Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .settings-card {
+        backdrop-filter: blur(25px);
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 24px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        transition: all 0.3s ease;
+    }
+
+        .settings-card:hover {
+            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+        }
+
+    .setting-item {
+        margin-bottom: 1.5rem;
+    }
+
+        .setting-item label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+    .setting-value {
+        color: white;
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 1rem;
+        background: rgba(255,255,255,0.1);
+        border-radius: 12px;
+        border-right: 4px solid #8b5cf6;
+    }
+
+    .btn-purple {
+        background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+        border: none;
+    }
+
+        .btn-purple:hover {
+            background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+        }
+
+    .form-select:focus, .form-control:focus {
+        background: rgba(255,255,255,0.2) !important;
+        border-color: #8b5cf6 !important;
+        box-shadow: 0 0 0 0.25rem rgba(139,92,246,0.25) !important;
+        color: white !important;
+    }
+</style>

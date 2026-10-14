@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Account Statement - BankingPro</title>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="position-relative min-vh-100">
+    <!-- BANK BACKGROUND -->
+    <div class="bank-bg-overlay"></div>
+
+    <div class="container-fluid py-5 pt-5">
+        <!-- Header -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <div class="transparent-card p-4 mb-4">
+                    <h1 class="display-4 fw-bold text-white mb-3">
+                        <i class="bi bi-file-earmark-text me-2"></i>Account Statement
+                    </h1>
+                    <p class="lead text-white-50 mb-0">Last 30 days transaction history</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Info Cards -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div class="transparent-card p-4 text-center h-100">
+                    <i class="bi bi-bank2 fs-1 text-primary mb-3"></i>
+                    <h5 class="text-white">BankingPro</h5>
+                    <small class="text-white-50">Premium Savings Account</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="transparent-card p-4 text-center h-100">
+                    <h3 class="text-success fw-bold">@ViewBag.TotalBalance?.ToString("N0") ?? "₹1,25,000"</h3>
+                    <small class="text-white-50">Available Balance</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="transparent-card p-4 text-center h-100">
+                    <h5 class="text-white fw-bold">@ViewBag.AccountNumber ?? "BP12345678"</h5>
+                    <small class="text-white-50">Account Number</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="transparent-card p-4 text-center h-100">
+                    <h5 class="text-white">01 Jan - 31 Jan 2026</h5>
+                    <small class="text-white-50">Statement Period</small>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Transactions Table -->
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-light border-0">
+                <h5 class="mb-0"><i class="bi bi-list-ul me-2"></i>Recent Transactions (10)</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Demo Transactions -->
+                            <tr>
+                                <td>19 Jan 2026</td>
+                                <td>Opening Balance</td>
+                                <td><span class="badge bg-success">Credit</span></td>
+                                <td class="text-success fw-bold">₹25,450</td>
+                                <td>₹25,450</td>
+                            </tr>
+                            <tr>
+                                <td>18 Jan 2026</td>
+                                <td>Salary Credit - XYZ Corp</td>
+                                <td><span class="badge bg-success">Credit</span></td>
+                                <td class="text-success fw-bold">₹1,25,000</td>
+                                <td>₹1,50,450</td>
+                            </tr>
+                            <tr>
+                                <td>17 Jan 2026</td>
+                                <td>UPI Transfer to BP12345678</td>
+                                <td><span class="badge bg-danger">Debit</span></td>
+                                <td class="text-danger fw-bold">-₹5,000</td>
+                                <td>₹25,450</td>
+                            </tr>
+                            <tr>
+                                <td>16 Jan 2026</td>
+                                <td>Electricity Bill Payment</td>
+                                <td><span class="badge bg-danger">Debit</span></td>
+                                <td class="text-danger fw-bold">-₹2,450</td>
+                                <td>₹30,450</td>
+                            </tr>
+                            <tr>
+                                <td>15 Jan 2026</td>
+                                <td>Cash Deposit</td>
+                                <td><span class="badge bg-success">Credit</span></td>
+                                <td class="text-success fw-bold">₹10,000</td>
+                                <td>₹32,900</td>
+                            </tr>
+                            <tr>
+                                <td>14 Jan 2026</td>
+                                <td>ATM Withdrawal</td>
+                                <td><span class="badge bg-danger">Debit</span></td>
+                                <td class="text-danger fw-bold">-₹3,000</td>
+                                <td>₹22,900</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="row mt-4 g-3">
+            <div class="col-md-4">
+                <div class="card shadow border-0 text-center p-4">
+                    <h3 class="text-success">₹1,60,450</h3>
+                    <small class="text-muted">Total Credits</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow border-0 text-center p-4">
+                    <h3 class="text-danger">₹10,450</h3>
+                    <small class="text-muted">Total Debits</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow border-0 text-center p-4 bg-gradient-success text-white">
+                    <h3>₹25,450</h3>
+                    <small>Closing Balance</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="/Account/Dashboard" class="btn btn-outline-light btn-lg px-5 py-3 me-3">
+                <i class="bi bi-house-door me-2"></i>Dashboard
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

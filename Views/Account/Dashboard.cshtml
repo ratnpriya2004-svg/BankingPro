@@ -1,0 +1,320 @@
+﻿<div class="bank-bg-overlay"></div>
+<div class="container-fluid py-5 pt-md-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-9 col-lg-10">
+            <!-- 🔥 TOP CORNER HAMBURGER + Welcome -->
+            <div class="d-flex justify-content-between align-items-start mb-5">
+                <!-- LEFT Welcome -->
+                <div>
+                    <h1 class="text-white fw-bold mb-2 fs-2 fs-lg-1">Welcome, @ViewBag.Name!</h1>
+                    <div class="project-transparent px-4 py-2 d-inline-block">
+                        @ViewBag.AccountNumber
+                    </div>
+                </div>
+
+                <!-- 🔥 TOP-RIGHT CORNER HAMBURGER ☰ -->
+                <div class="position-relative">
+                    <button class="btn btn-outline-light btn-lg p-4 hamburger-corner shadow-lg"
+                            type="button" data-bs-toggle="offcanvas" data-bs-target="#userMenuOffcanvas"
+                            style="border-radius: 20px !important;">
+                        <i class="bi bi-list fs-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 🔥 HUGE CENTER BALANCE CARD -->
+            <div class="text-center mb-6">
+                <div class="balance-transparent-lg p-5 mx-auto shadow-2xl" style="max-width: 600px; border-radius: 30px;">
+                    <h2 class="text-white mb-4 fs-4">💳 Account Balance</h2>
+                    <div class="fs-display text-white fw-bold mb-3"
+                         style="font-size: clamp(4rem, 12vw, 7rem) !important; font-weight: 900;">
+                        ₹@(ViewBag.TotalBalance?.ToString("N0") ?? "1,25,000")
+                    </div>
+                    <div class="text-white-50 fs-5">@ViewBag.AccountNumber • Premium Savings</div>
+                </div>
+            </div>
+
+            <!-- 🔥 12 BANKING BUTTONS - MORE SPACING -->
+            <div class="row g-4 g-xl-5 mb-6">
+                <!-- Row 1 -->
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a href="/Account/TransferMoney" class="bank-btn bank-transfer h-100">
+                        <div class="btn-icon mb-3"><i class="bi bi-arrow-left-right"></i></div>
+                        <span class="btn-text">Transfer</span>
+                    </a>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a href="/Account/BillPayments" class="bank-btn bank-bills h-100">
+                        <div class="btn-icon mb-3"><i class="bi bi-receipt-cutoff"></i></div>
+                        <span class="btn-text">Bills</span>
+                    </a>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a href="/Account/ApplyLoan" class="bank-btn bank-loan h-100">
+                        <div class="btn-icon mb-3"><i class="bi bi-cash-stack"></i></div>
+                        <span class="btn-text">Loans</span>
+                    </a>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a href="/Account/FixedDeposit" class="bank-btn bank-fd h-100">
+                        <div class="btn-icon mb-3"><i class="bi bi-piggy-bank"></i></div>
+                        <span class="btn-text">FD</span>
+                    </a>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a href="/Account/AccountStatement" class="bank-btn bank-statement h-100">
+                        <div class="btn-icon mb-3"><i class="bi bi-file-earmark-text"></i></div>
+                        <span class="btn-text">Statement</span>
+                    </a>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a href="/Account/BalanceEnquiry" class="bank-btn bank-balance h-100">
+                        <div class="btn-icon mb-3"><i class="bi bi-wallet2"></i></div>
+                        <span class="btn-text">Balance</span>
+                    </a>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a href="/Account/CreditCards" class="bank-btn bank-cards h-100">
+                        <div class="btn-icon mb-3"><i class="bi bi-credit-card"></i></div>
+                        <span class="btn-text">Cards</span>
+                    </a>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a href="/Account/Insurance" class="bank-btn bank-insurance h-100">
+                        <div class="btn-icon mb-3"><i class="bi bi-shield-check"></i></div>
+                        <span class="btn-text">Insurance</span>
+                    </a>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a href="/Account/UpiQr" class="bank-btn bank-upi h-100">
+                        <div class="btn-icon mb-3"><i class="bi bi-qr-code"></i></div>
+                        <span class="btn-text">UPI</span>
+                    </a>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a href="/Account/Profile" class="bank-btn bank-profile h-100">
+                        <div class="btn-icon mb-3"><i class="bi bi-person-circle"></i></div>
+                        <span class="btn-text">Profile</span>
+                    </a>
+                </div>
+                <!-- पुराना Support button को ये EMI Calculator button से replace करो -->
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a href="/Account/EmiCalculator" class="bank-btn bank-emi h-100">
+                        <div class="btn-icon mb-3"><i class="bi bi-calculator"></i></div>
+                        <span class="btn-text">EMI Calc</span>
+                    </a>
+                </div>
+
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a href="/Account/Logout" class="bank-btn bank-logout h-100">
+                        <div class="btn-icon mb-3"><i class="bi bi-box-arrow-right"></i></div>
+                        <span class="btn-text">Logout</span>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🔥 HAMBURGER SIDEBAR (TOP-RIGHT CORNER) -->
+<!-- 🔥 HAMBURGER SIDEBAR (TOP-RIGHT CORNER) - UPDATED -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="userMenuOffcanvas" data-bs-backdrop="static">
+    <div class="offcanvas-header border-0 bg-primary">
+        <h5 class="text-white mb-0 fw-bold">
+            <i class="bi bi-person-circle me-2"></i>@ViewBag.Name
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+        <div class="list-group list-group-flush">
+            <!-- Profile -->
+            <a href="/Account/Profile" class="list-group-item list-group-item-action border-0 px-4 py-4">
+                <i class="bi bi-person-circle me-3 text-primary fs-4"></i>
+                <span class="fw-bold fs-6">My Profile</span>
+            </a>
+
+            <!-- Settings - WORKING -->
+            <a href="/Account/Settings" class="list-group-item list-group-item-action border-0 px-4 py-4">
+                <i class="bi bi-gear me-3 text-warning fs-4"></i>
+                <span class="fw-bold fs-6">⚙️ Settings</span>
+            </a>
+
+            <!-- Help - WORKING -->
+            <a href="/Account/Help" class="list-group-item list-group-item-action border-0 px-4 py-4">
+                <i class="bi bi-question-circle me-3 text-success fs-4"></i>
+                <span class="fw-bold fs-6">❓ Help Center</span>
+            </a>
+
+            <!-- User Management -->
+            <a href="#" class="list-group-item list-group-item-action border-0 px-4 py-4">
+                <i class="bi bi-people me-3 text-info fs-4"></i>
+                <span class="fw-bold fs-6">👥 User Management</span>
+            </a>
+
+            <!-- Logout -->
+            <a href="/Account/Logout" class="list-group-item list-group-item-action border-0 px-4 py-4 border-top bg-danger bg-opacity-10">
+                <i class="bi bi-box-arrow-right me-3 text-danger fs-4"></i>
+                <span class="fw-bold fs-6 text-danger">Logout</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- सिर्फ CSS को replace करो Dashboard.cshtml के style section में -->
+<style>
+    /* 🔥 PROFESSIONAL BANKING BOXES - Perfect Spacing + Glass Effect */
+    .bank-btn {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white !important;
+        text-decoration: none !important;
+        padding: 3rem 2rem !important; /* MORE SPACING */
+        border-radius: 28px !important; /* ROUNDED CORNERS */
+        backdrop-filter: blur(30px) !important; /* STRONGER GLASS */
+        border: 2px solid rgba(255,255,255,0.25) !important;
+        background: rgba(255,255,255,0.08) !important; /* PROFESSIONAL OPACITY */
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+        min-height: 160px !important; /* TALLER BOXES */
+        box-shadow: 0 20px 60px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .bank-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .bank-btn:hover::before {
+            left: 100%;
+        }
+
+        .bank-btn:hover {
+            transform: translateY(-15px) scale(1.02) !important;
+            box-shadow: 0 35px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.4) !important;
+            border-color: rgba(255,255,255,0.5) !important;
+            background: rgba(255,255,255,0.12) !important;
+        }
+
+        .bank-btn .btn-icon {
+            width: 70px !important;
+            height: 70px !important;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem !important;
+            margin-bottom: 1rem !important;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .bank-btn .btn-text {
+            font-size: 1.15rem !important;
+            font-weight: 800 !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+    /* 🔥 PROFESSIONAL COLORS */
+    .bank-transfer {
+        background: linear-gradient(135deg, rgba(34,197,94,0.18), rgba(74,222,128,0.12));
+    }
+
+    .bank-bills {
+        background: linear-gradient(135deg, rgba(59,130,246,0.18), rgba(99,102,241,0.12));
+    }
+
+    .bank-loan {
+        background: linear-gradient(135deg, rgba(16,185,129,0.18), rgba(34,197,94,0.12));
+    }
+
+    .bank-fd {
+        background: linear-gradient(135deg, rgba(245,158,11,0.18), rgba(251,191,36,0.12));
+    }
+
+    .bank-statement {
+        background: linear-gradient(135deg, rgba(236,72,153,0.18), rgba(255,107,107,0.12));
+    }
+
+    .bank-balance {
+        background: linear-gradient(135deg, rgba(17,141,236,0.18), rgba(59,130,246,0.12));
+    }
+
+    .bank-cards {
+        background: linear-gradient(135deg, rgba(168,85,247,0.18), rgba(129,140,248,0.12));
+    }
+
+    .bank-insurance {
+        background: linear-gradient(135deg, rgba(6,182,212,0.22), rgba(14,165,233,0.18)) !important;
+        border-image: linear-gradient(135deg, #0ea5e9, #0284c7) 1;
+    }
+
+    .bank-upi {
+        background: linear-gradient(135deg, rgba(5,150,105,0.18), rgba(34,197,94,0.12));
+    }
+
+    .bank-profile {
+        background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(139,92,246,0.20));
+    }
+
+    .bank-support {
+        background: linear-gradient(135deg, rgba(245,158,11,0.18), rgba(251,191,36,0.12));
+    }
+
+    .bank-logout {
+        background: linear-gradient(135deg, rgba(239,68,68,0.22), rgba(248,113,113,0.18));
+    }
+
+    /* 🔥 CORNER HAMBURGER PROFESSIONAL */
+    .hamburger-corner {
+        position: fixed !important;
+        top: 25px;
+        right: 25px;
+        z-index: 1060;
+        backdrop-filter: blur(35px) !important;
+        background: rgba(255,255,255,0.12) !important;
+        border: 2px solid rgba(255,255,255,0.35) !important;
+        border-radius: 22px !important;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.4);
+        padding: 1.2rem !important;
+        width: 65px;
+        height: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .hamburger-corner:hover {
+            background: rgba(255,255,255,0.20) !important;
+            transform: scale(1.08) !important;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4) !important;
+        }
+    /* 🔥 EMI CALCULATOR BUTTON - Perfect Gold Color */
+    .bank-emi {
+        background: linear-gradient(135deg, rgba(245,158,11,0.25), rgba(251,191,36,0.20)) !important;
+    }
+
+        .bank-emi .btn-icon {
+            background: rgba(245,158,11,0.4) !important;
+            color: #f59e0b !important;
+        }
+
+        .bank-emi:hover {
+            background: linear-gradient(135deg, rgba(245,158,11,0.35), rgba(251,191,36,0.30)) !important;
+        }
+</style>

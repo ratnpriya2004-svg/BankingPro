@@ -1,0 +1,65 @@
+﻿<div class="container-fluid py-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+
+            <!-- CUTE HEADER -->
+            <div class="text-center mb-5">
+                <div class="transparent-card p-4">
+                    <i class="bi bi-arrow-left-right fs-1 text-success mb-3"></i>
+                    <h2 class="fw-bold text-black mb-2">Send Money 💸</h2>
+                    <small class="text-black-50">Super Fast • Free • Secure</small>
+                </div>
+            </div>
+
+            <!-- CHOTA FORM -->
+            <div class="transparent-card p-4">
+                <form asp-action="TransferMoney" method="post">
+
+                    <!-- FROM -->
+                    <div class="mb-3">
+                        <small class="text-black-50 mb-1 d-block">From:</small>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-transparent text-success">
+                                <i class="bi bi-bank"></i>
+                            </span>
+                            <input class="form-control bg-transparent text-black"
+                                   value="@ViewBag.AccountNumber" readonly style="font-size: 14px;">
+                        </div>
+                    </div>
+
+                    <!-- TO -->
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-black mb-2">To Account ✨</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-primary bg-opacity-20">
+                                <i class="bi bi-person"></i>
+                            </span>
+                            <input name="toAccount" class="form-control bg-transparent border-0 text-black py-3"
+                                   placeholder="BP12345678" required>
+                        </div>
+                    </div>
+
+                    <!-- AMOUNT -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-black mb-2">Amount 💰</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-success bg-opacity-20 fs-5">₹</span>
+                            <input name="amount" type="number" class="form-control bg-transparent border-0 text-black py-3 fs-4 text-end"
+                                   placeholder="5000" required>
+                        </div>
+                    </div>
+
+                    <!-- SEND BUTTON -->
+                    <button type="submit" class="btn btn-success w-100 fw-bold py-3 fs-5 mb-3">
+                        <i class="bi bi-send-fill me-2"></i>Send Now 🚀
+                    </button>
+
+                    <!-- BACK -->
+                    <a href="/Account/Dashboard" class="btn btn-outline-light w-100 py-2">
+                        <i class="bi bi-house-door me-2"></i>🏠 Dashboard
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

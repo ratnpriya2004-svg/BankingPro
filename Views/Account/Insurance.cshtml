@@ -1,0 +1,95 @@
+﻿<div class="bank-bg-overlay"></div>
+<div class="container py-5 min-vh-100">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- HEADER -->
+            <div class="text-center mb-6">
+                <i class="bi bi-shield-check display-3 text-cyan mb-4"></i>
+                <h1 class="text-white fw-bold fs-1">Insurance Plans</h1>
+                <div class="project-transparent px-4 py-2 d-inline-block">
+                    @ViewBag.AccountNumber
+                </div>
+            </div>
+
+            <!-- INSURANCE CARDS -->
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="insurance-card cyan-glass">
+                        <div class="card-icon"><i class="bi bi-heart-fill"></i></div>
+                        <h5>Health Insurance</h5>
+                        <p class="text-white-50">Complete medical coverage</p>
+                        <div class="price">₹999/month</div>
+                        <a href="#" class="btn btn-cyan w-100 mt-3">Get Plan</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="insurance-card green-glass">
+                        <div class="card-icon"><i class="bi bi-car-front-fill"></i></div>
+                        <h5>Car Insurance</h5>
+                        <p class="text-white-50">Vehicle protection</p>
+                        <div class="price">₹599/month</div>
+                        <a href="#" class="btn btn-green w-100 mt-3">Get Plan</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="insurance-card gold-glass">
+                        <div class="card-icon"><i class="bi bi-house-fill"></i></div>
+                        <h5>Home Insurance</h5>
+                        <p class="text-white-50">Property safety</p>
+                        <div class="price">₹299/month</div>
+                        <a href="#" class="btn btn-gold w-100 mt-3">Get Plan</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <a href="/Account/Dashboard" class="btn btn-outline-light btn-lg px-5 py-3">
+                    <i class="bi bi-house-door me-2"></i>Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .insurance-card {
+        backdrop-filter: blur(25px);
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 24px;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        color: white;
+        transition: all 0.4s ease;
+        height: 100%;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+        .insurance-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+
+    .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cyan-glass .card-icon {
+        color: #0ea5e9;
+    }
+
+    .green-glass .card-icon {
+        color: #10b981;
+    }
+
+    .gold-glass .card-icon {
+        color: #f59e0b;
+    }
+
+    .price {
+        font-size: 1.8rem;
+        font-weight: 900;
+        margin: 1rem 0;
+    }
+</style>

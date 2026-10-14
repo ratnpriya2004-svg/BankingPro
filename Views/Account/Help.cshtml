@@ -1,0 +1,235 @@
+<div class="bank-bg-overlay"></div>
+<div class="container py-5 min-vh-100">
+    <div class="row justify-content-center">
+        <div class="col-lg-11">
+            <!-- HEADER -->
+            <div class="text-center mb-6">
+                <i class="bi bi-question-circle display-3 text-green mb-4"></i>
+                <h1 class="text-white fw-bold fs-1">Help Center</h1>
+                <p class="text-white-50 lead mb-0">Find answers to your questions</p>
+            </div>
+
+            <!-- SEARCH BAR -->
+            <div class="text-center mb-6">
+                <div class="search-container mx-auto" style="max-width: 600px;">
+                    <i class="bi bi-search search-icon"></i>
+                    <input type="text" class="help-search" placeholder="Search for help... (e.g., transfer, balance, forgot password)">
+                </div>
+            </div>
+
+            <!-- HELP CATEGORIES -->
+            <div class="row g-4 mb-6">
+                <div class="col-lg-3 col-md-6">
+                    <a href="#" class="help-category-card getting-started">
+                        <i class="bi bi-play-circle"></i>
+                        <h5>Getting Started</h5>
+                        <p>Registration, login, first steps</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="#" class="help-category-card transfers">
+                        <i class="bi bi-arrow-left-right"></i>
+                        <h5>Money Transfer</h5>
+                        <p>UPI, NEFT, IMPS, transfers</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="#" class="help-category-card payments">
+                        <i class="bi bi-receipt"></i>
+                        <h5>Bill Payments</h5>
+                        <p>Electricity, mobile, credit card</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="#" class="help-category-card security">
+                        <i class="bi bi-shield-check"></i>
+                        <h5>Security</h5>
+                        <p>Password, 2FA, account safety</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="#" class="help-category-card cards">
+                        <i class="bi bi-credit-card"></i>
+                        <h5>Cards</h5>
+                        <p>Debit card, credit card queries</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="#" class="help-category-card loans">
+                        <i class="bi bi-cash-stack"></i>
+                        <h5>Loans</h5>
+                        <p>Personal loan, EMI, repayment</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="#" class="help-category-card upi">
+                        <i class="bi bi-qr-code"></i>
+                        <h5>UPI</h5>
+                        <p>UPI ID, QR payments</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="#" class="help-category-card contact">
+                        <i class="bi bi-telephone"></i>
+                        <h5>Contact Us</h5>
+                        <p>Phone, email, chat support</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- QUICK HELP BUTTONS -->
+            <div class="text-center">
+                <div class="row g-3 justify-content-center">
+                    <div class="col-md-3 col-sm-6">
+                        <a href="#" class="quick-help-btn video-help">
+                            <i class="bi bi-play-circle me-2"></i>Watch Tutorial
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="#" class="quick-help-btn chat-help">
+                            <i class="bi bi-chat-dots me-2"></i>Live Chat
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="/Account/Support" class="quick-help-btn support-help">
+                            <i class="bi bi-headset me-2"></i>Get Support
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <a href="/Account/Dashboard" class="btn btn-outline-light btn-lg px-5 py-3">
+                    <i class="bi bi-house-door me-2"></i>Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .help-category-card {
+        padding: 2.5rem 2rem;
+        border-radius: 24px;
+        backdrop-filter: blur(25px);
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.25);
+        height: 180px;
+        transition: all 0.4s ease;
+        text-decoration: none;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+        .help-category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            text-decoration: none;
+            color: white;
+        }
+
+        .help-category-card i {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+        }
+
+    .getting-started i {
+        background: rgba(16,185,129,0.3);
+        color: #10b981;
+    }
+
+    .transfers i {
+        background: rgba(59,130,246,0.3);
+        color: #3b82f6;
+    }
+
+    .payments i {
+        background: rgba(245,158,11,0.3);
+        color: #f59e0b;
+    }
+
+    .security i {
+        background: rgba(239,68,68,0.3);
+        color: #ef4444;
+    }
+
+    .search-container {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #94a3b8;
+        z-index: 10;
+    }
+
+    .help-search {
+        width: 100%;
+        padding: 1.5rem 1.5rem 1.5rem 4rem;
+        border-radius: 50px;
+        backdrop-filter: blur(20px);
+        background: rgba(255,255,255,0.15);
+        border: 2px solid rgba(255,255,255,0.3);
+        color: white;
+        font-size: 1.1rem;
+    }
+
+        .help-search::placeholder {
+            color: #94a3b8;
+        }
+
+        .help-search:focus {
+            outline: none;
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 0.25rem rgba(96,165,250,0.25);
+        }
+
+    .quick-help-btn {
+        display: block;
+        padding: 1.5rem 2rem;
+        border-radius: 20px;
+        text-align: center;
+        font-weight: 700;
+        backdrop-filter: blur(20px);
+        border: 2px solid rgba(255,255,255,0.3);
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+        .quick-help-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            color: white;
+        }
+
+    .video-help {
+        background: rgba(16,185,129,0.2);
+        border-color: #10b981;
+    }
+
+    .chat-help {
+        background: rgba(245,158,11,0.2);
+        border-color: #f59e0b;
+    }
+
+    .support-help {
+        background: rgba(59,130,246,0.2);
+        border-color: #3b82f6;
+    }
+</style>

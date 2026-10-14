@@ -1,0 +1,220 @@
+<div class="bank-bg-overlay"></div>
+<div class="container py-5 min-vh-100">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <!-- HEADER -->
+            <div class="text-center mb-6">
+                <i class="bi bi-people display-3 text-purple mb-4"></i>
+                <h1 class="text-white fw-bold fs-1">User Management</h1>
+                <div class="project-transparent px-5 py-2 d-inline-block fs-5">
+                    Admin Panel - @ViewBag.Users.Count Users
+                </div>
+            </div>
+
+            <!-- ADD NEW USER BUTTON -->
+            <div class="text-center mb-5">
+                <button class="btn btn-success btn-lg px-5 py-3 me-3" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                    <i class="bi bi-plus-circle me-2"></i>Add New User
+                </button>
+                <a href="/Account/Dashboard" class="btn btn-outline-light btn-lg px-5 py-3">
+                    <i class="bi bi-house-door me-2"></i>Back to Dashboard
+                </a>
+            </div>
+
+            <!-- USERS TABLE -->
+            <div class="users-table-card">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th><i class="bi bi-person"></i> Name</th>
+                                <th><i class="bi bi-envelope"></i> Email</th>
+                                <th><i class="bi bi-credit-card"></i> Account</th>
+                                <th><i class="bi bi-star"></i> Role</th>
+                                <th><i class="bi bi-circle"></i> Status</th>
+                                <th><i class="bi bi-calendar"></i> Joined</th>
+                                <th><i class="bi bi-three-dots"></i> Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in ViewBag.Users)
+                            {
+                            <tr>
+                                <td>
+                                    <div class="user-avatar me-2">@user.Name.Substring(0,1)</div>
+                                    <strong>@user.Name</strong>
+                                </td>
+                                <td>@user.Email</td>
+                                <td><code>@user.Account</code></td>
+                                <td>
+                                    <span class="role-badge role-@user.Role.ToString().ToLower()">
+                                        @user.Role
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="status-badge status-@user.Status.ToLower()">
+                                        @user.Status
+                                    </span>
+                                </td>
+                                <td>@user.Joined</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm btn-outline-primary me-1" title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-warning me-1" title="Role">
+                                            <i class="bi bi-star"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-success me-1" title="Activate">
+                                            <i class="bi bi-play-circle"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger" title="Delete">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ADD USER MODAL -->
+<div class="modal fade" id="addUserModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content glass-modal">
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-white">
+                    <i class="bi bi-plus-circle me-2"></i>Add New User
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label text-white">Full Name</label>
+                            <input type="text" class="form-control" placeholder="Enter full name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-white">Email</label>
+                            <input type="email" class="form-control" placeholder="user@email.com">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-white">Phone</label>
+                            <input type="tel" class="form-control" placeholder="+91 88888 88888">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-white">Role</label>
+                            <select class="form-select" style="background: rgba(255,255,255,0.1); color: white;">
+                                <option>User</option>
+                                <option>Premium</option>
+                                <option>Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-success btn-lg px-5 py-2">Create User</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .users-table-card {
+        backdrop-filter: blur(25px);
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    }
+
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-right: 12px;
+    }
+
+    .role-badge {
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .role-admin {
+        background: rgba(139,92,246,0.3);
+        color: #8b5cf6;
+    }
+
+    .role-premium {
+        background: rgba(245,158,11,0.3);
+        color: #f59e0b;
+    }
+
+    .role-user {
+        background: rgba(59,130,246,0.3);
+        color: #3b82f6;
+    }
+
+    .status-badge {
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .status-active {
+        background: rgba(16,185,129,0.3);
+        color: #10b981;
+    }
+
+    .status-inactive {
+        background: rgba(107,114,128,0.3);
+        color: #6b7280;
+    }
+
+    .action-buttons .btn {
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .glass-modal {
+        backdrop-filter: blur(25px);
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 24px;
+    }
+
+    .form-control, .form-select {
+        background: rgba(255,255,255,0.1) !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        color: white !important;
+        border-radius: 12px;
+    }
+
+        .form-control:focus, .form-select:focus {
+            background: rgba(255,255,255,0.2) !important;
+            border-color: #60a5fa !important;
+            box-shadow: 0 0 0 0.25rem rgba(96,165,250,0.25) !important;
+        }
+
+        .form-control::placeholder {
+            color: #94a3b8 !important;
+        }
+</style>

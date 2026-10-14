@@ -1,0 +1,226 @@
+﻿<div class="bank-bg-overlay"></div>
+<div class="container py-5 min-vh-100">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+            <!-- HEADER -->
+            <div class="text-center mb-6">
+                <i class="bi bi-calculator display-3 text-gold mb-4"></i>
+                <h1 class="text-white fw-bold fs-1">EMI Calculator</h1>
+                <p class="text-white-50 lead mb-0">Calculate your loan repayments instantly</p>
+            </div>
+
+            <!-- EMI CALCULATOR FORM -->
+            <div class="emi-calculator-card mb-6">
+                <form id="emiForm">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <label class="form-label text-white fw-bold">Loan Amount (₹)</label>
+                            <input type="number" id="loanAmount" class="form-control form-control-lg"
+                                   value="500000" min="10000" step="1000" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label text-white fw-bold">Interest Rate (%)</label>
+                            <input type="number" id="interestRate" class="form-control form-control-lg"
+                                   value="8.5" min="1" max="25" step="0.1" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label text-white fw-bold">Loan Tenure (Years)</label>
+                            <input type="number" id="tenure" class="form-control form-control-lg"
+                                   value="5" min="1" max="30" required>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                        <button type="submit" class="btn btn-gold btn-lg px-5 py-3 fs-5 fw-bold">
+                            <i class="bi bi-calculator me-2"></i>Calculate EMI
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- RESULTS SECTION -->
+            <div id="resultsSection" class="row g-4" style="display: none;">
+                <!-- EMI BREAKDOWN -->
+                <div class="col-lg-8">
+                    <div class="emi-result-card">
+                        <h4 class="text-white mb-4">
+                            <i class="bi bi-receipt me-2 text-gold"></i>EMI Breakdown
+                        </h4>
+                        <div class="row text-center mb-4">
+                            <div class="col-md-4">
+                                <div class="emi-stat">
+                                    <div class="emi-number" id="monthlyEmi">₹0</div>
+                                    <div class="emi-label">Monthly EMI</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="emi-stat">
+                                    <div class="emi-number" id="totalAmount">₹0</div>
+                                    <div class="emi-label">Total Amount</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="emi-stat">
+                                    <div class="emi-number" id="totalInterest">₹0</div>
+                                    <div class="emi-label">Total Interest</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EMI CHART -->
+                <div class="col-lg-4">
+                    <div class="emi-chart-card">
+                        <h5 class="text-white mb-3">Payment Distribution</h5>
+                        <canvas id="emiChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="text-center">
+                <a href="/Account/ApplyLoan" class="btn btn-outline-gold btn-lg px-5 py-3 me-3">
+                    <i class="bi bi-cash-stack me-2"></i>Apply for Loan
+                </a>
+                <a href="/Account/Dashboard" class="btn btn-outline-light btn-lg px-5 py-3">
+                    <i class="bi bi-house-door me-2"></i>Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.getElementById('emiForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    calculateEMI();
+});
+
+function calculateEMI() {
+    const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+    const annualRate = parseFloat(document.getElementById('interestRate').value);
+    const tenureYears = parseFloat(document.getElementById('tenure').value);
+
+    const monthlyRate = annualRate / (12 * 100);
+    const months = tenureYears * 12;
+
+    // EMI Formula: P * r * (1+r)^n / ((1+r)^n - 1)
+    const emi = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, months)) /
+                (Math.pow(1 + monthlyRate, months) - 1);
+
+    const totalAmount = emi * months;
+    const totalInterest = totalAmount - loanAmount;
+
+    // Update Results
+    document.getElementById('monthlyEmi').textContent = '₹' + emi.toLocaleString('en-IN', {maximumFractionDigits: 0});
+    document.getElementById('totalAmount').textContent = '₹' + totalAmount.toLocaleString('en-IN', {maximumFractionDigits: 0});
+    document.getElementById('totalInterest').textContent = '₹' + totalInterest.toLocaleString('en-IN', {maximumFractionDigits: 0});
+
+    document.getElementById('resultsSection').style.display = 'block';
+
+    // Update Chart
+    updateChart(loanAmount, totalInterest);
+}
+
+function updateChart(principal, interest) {
+    const ctx = document.getElementById('emiChart').getContext('2d');
+    if (window.emiChart) window.emiChart.destroy();
+
+    window.emiChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Principal', 'Interest'],
+            datasets: [{
+                data: [principal, interest],
+                backgroundColor: ['#10b981', '#f59e0b'],
+                borderWidth: 0,
+                borderRadius: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+}
+
+// Input enhancements
+document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('input', function() {
+        this.style.background = 'rgba(255,255,255,0.1)';
+    });
+});
+</script>
+
+<style>
+    .emi-calculator-card {
+        backdrop-filter: blur(30px);
+        background: rgba(255,255,255,0.15);
+        border: 2px solid rgba(255,255,255,0.3);
+        border-radius: 30px;
+        padding: 3.5rem;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    }
+
+    .emi-result-card, .emi-chart-card {
+        backdrop-filter: blur(25px);
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 24px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+    .emi-number {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #facc15;
+        background: linear-gradient(135deg, #facc15, #fbbf24);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+    }
+
+    .emi-label {
+        color: #e7e5e4;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    .emi-stat {
+        padding: 1.5rem 0;
+    }
+
+    .btn-gold {
+        background: linear-gradient(135deg, #f59e0b, #fbbf24);
+        border: none;
+        backdrop-filter: blur(20px);
+    }
+
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+            transform: translateY(-2px);
+        }
+
+    .btn-outline-gold {
+        color: #fbbf24;
+        border-color: #fbbf24;
+        backdrop-filter: blur(20px);
+    }
+
+        .btn-outline-gold:hover {
+            background: #fbbf24;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+    .form-control:focus {
+        background: rgba(255,255,255,0.2);
+        border-color: #fbbf24;
+        box-shadow: 0 0 0 0.2rem rgba(245,158,11,0.25);
+    }
+</style>

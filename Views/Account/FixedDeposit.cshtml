@@ -1,0 +1,120 @@
+﻿<!-- FixedDeposit.cshtml -->
+@{
+    ViewData["Title"] = "Fixed Deposit";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold mb-4">🏦 Fixed Deposit</h1>
+                <p class="lead text-muted">Earn up to <strong>7.5% p.a.</strong> with flexible tenures</p>
+            </div>
+
+            <!-- FD Rates Table -->
+            <div class="card shadow-lg border-0 mb-5">
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0"><i class="bi bi-table me-2"></i>Interest Rates (Senior Citizens +0.5%)</h4>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Tenure</th>
+                                    <th>Regular (% p.a.)</th>
+                                    <th>Senior (% p.a.)</th>
+                                    <th>Min Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>7-14 Days</td><td>3.50%</td><td>4.00%</td><td>₹10,000</td></tr>
+                                <tr><td>15-29 Days</td><td>4.00%</td><td>4.50%</td><td>₹10,000</td></tr>
+                                <tr><td>30-90 Days</td><td>5.25%</td><td>5.75%</td><td>₹10,000</td></tr>
+                                <tr class="table-warning"><td>6-12 Months</td><td><strong>7.00%</strong></td><td><strong>7.50%</strong></td><td>₹10,000</td></tr>
+                                <tr><td>1-3 Years</td><td>6.75%</td><td>7.25%</td><td>₹25,000</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FD Calculator -->
+            <div class="card shadow-lg border-0 mb-5">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0"><i class="bi bi-calculator me-2"></i>FD Calculator</h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Deposit Amount (₹)</label>
+                            <input type="range" class="form-range" id="depositAmt" min="10000" max="5000000" value="100000">
+                            <div id="depositValue" class="fw-bold fs-5 text-success">₹1,00,000</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Tenure (Months)</label>
+                            <input type="range" class="form-range" id="fdTenure" min="7" max="36" value="12">
+                            <div id="fdTenureValue" class="fw-bold fs-5 text-success">12 months</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Rate (% p.a.)</label>
+                            <select class="form-select" id="fdRate">
+                                <option value="7.0">7.00% (Regular)</option>
+                                <option value="7.5">7.50% (Senior)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <div class="h4 text-primary fw-bold" id="maturityAmt">₹1,07,000</div>
+                            <div class="text-muted">Maturity Amount</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="h4 text-info fw-bold" id="interestEarned">₹7,000</div>
+                            <div class="text-muted">Interest Earned</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invest Now -->
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <h3 class="mb-0">Start Your FD Today</h3>
+                    <p class="mb-0 opacity-75">100% Safe • Auto-Renewal • Premature Withdrawal</p>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="InvestFD">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Account Number</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Amount (₹)</label>
+                                <input type="number" class="form-control" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg w-100">Invest Now →</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hover-lift {
+        transition: all 0.3s ease;
+    }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+        }
+
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+</style>

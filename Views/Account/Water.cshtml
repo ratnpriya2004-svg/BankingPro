@@ -1,0 +1,58 @@
+﻿<div class="container-fluid py-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <!-- HEADER -->
+            <div class="text-center mb-5">
+                <div class="solid-btn p-5 mb-4 mx-auto" style="max-width: 500px;">
+                    <i class="bi bi-droplet fs-1 mb-3"></i>
+                    <h2 class="fw-bold text-black mb-2">💧 Water Bill Payment</h2>
+                    <small class="text-black-50">DJD • BMC • All Boards</small>
+                </div>
+            </div>
+
+            <!-- FORM -->
+            <div class="transparent-card p-5">
+                <form asp-action="WaterBill" method="post">
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-black fs-5 mb-3">Consumer Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-info bg-opacity-20">
+                                <i class="bi bi-card-text"></i>
+                            </span>
+                            <input name="consumerNumber" class="form-control bg-transparent text-black"
+                                   placeholder="Enter 10-digit Consumer No." required>
+                            <button type="button" class="btn btn-outline-info">
+                                <i class="bi bi-search"></i> Fetch
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-black fs-5 mb-3">Bill Amount</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-success bg-opacity-20 fs-5">₹</span>
+                            <input name="amount" type="number" class="form-control bg-transparent text-black fs-4 text-end"
+                                   placeholder="1,250" required>
+                        </div>
+                    </div>
+
+                    <!-- QUICK BUTTONS -->
+                    <div class="row g-2 mb-4">
+                        <div class="col-4"><button type="button" class="btn btn-outline-light w-100 py-3 quick-pay" data-amt="500">₹500</button></div>
+                        <div class="col-4"><button type="button" class="btn btn-outline-light w-100 py-3 quick-pay" data-amt="1000">₹1K</button></div>
+                        <div class="col-4"><button type="button" class="btn btn-outline-light w-100 py-3 quick-pay" data-amt="2000">₹2K</button></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-info btn-lg w-100 fw-bold py-4 fs-4 mb-4">
+                        <i class="bi bi-credit-card me-2"></i>Pay Water Bill Now
+                    </button>
+
+                    <a href="/Account/BillPayments" class="btn btn-outline-light w-100 py-3">
+                        <i class="bi bi-arrow-left me-2"></i>← Back to Bills
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

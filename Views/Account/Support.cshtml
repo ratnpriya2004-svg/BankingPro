@@ -1,0 +1,166 @@
+<div class="bank-bg-overlay"></div>
+<div class="container py-5 min-vh-100">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <!-- HEADER -->
+            <div class="text-center mb-6">
+                <i class="bi bi-headset display-3 text-orange mb-4"></i>
+                <h1 class="text-white fw-bold fs-1">24/7 Support</h1>
+                <div class="project-transparent px-5 py-2 d-inline-block fs-5">
+                    We're here to help you
+                </div>
+            </div>
+
+            <!-- SUPPORT OPTIONS -->
+            <div class="row g-4 mb-6">
+                <div class="col-lg-4 col-md-6">
+                    <a href="tel:+918888888888" class="support-card call-card">
+                        <div class="support-icon">
+                            <i class="bi bi-telephone"></i>
+                        </div>
+                        <h5>Call Us</h5>
+                        <p class="text-white-50 mb-2">+91 88888 88888</p>
+                        <div class="support-time">24x7 Available</div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="mailto:support@bankingpro.com" class="support-card email-card">
+                        <div class="support-icon">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <h5>Email Us</h5>
+                        <p class="text-white-50 mb-2">support@bankingpro.com</p>
+                        <div class="support-time">Reply within 2 hrs</div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="#" class="support-card chat-card">
+                        <div class="support-icon">
+                            <i class="bi bi-chat-dots"></i>
+                        </div>
+                        <h5>Live Chat</h5>
+                        <p class="text-white-50 mb-2">Instant support</p>
+                        <div class="support-time">10:00 AM - 10:00 PM</div>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <a href="#" class="support-card ticket-card">
+                        <div class="support-icon">
+                            <i class="bi bi-ticket-detailed"></i>
+                        </div>
+                        <h5>Raise Ticket</h5>
+                        <p class="text-white-50 mb-2">Technical issues</p>
+                        <div class="support-time">Track your request</div>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <a href="#" class="support-card faq-card">
+                        <div class="support-icon">
+                            <i class="bi bi-question-circle"></i>
+                        </div>
+                        <h5>FAQ</h5>
+                        <p class="text-white-50 mb-2">Frequently asked questions</p>
+                        <div class="support-time">Self service</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- EMERGENCY CONTACT -->
+            <div class="text-center mb-5">
+                <div class="emergency-card">
+                    <i class="bi bi-exclamation-triangle fs-1 text-danger mb-3"></i>
+                    <h4 class="text-danger fw-bold">Emergency?</h4>
+                    <p class="text-white-50 mb-4 fs-5">Call our 24x7 helpline</p>
+                    <a href="tel:+918888888888" class="btn btn-danger btn-lg px-5 py-3 fs-5">
+                        +91 88888 88888
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="/Account/Dashboard" class="btn btn-outline-light btn-lg px-5 py-3">
+                    <i class="bi bi-house-door me-2"></i>Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .support-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 3rem 2rem;
+        border-radius: 24px;
+        backdrop-filter: blur(25px);
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.25);
+        height: 220px;
+        transition: all 0.4s ease;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+        .support-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            text-decoration: none;
+            color: white;
+        }
+
+    .support-icon {
+        width: 90px;
+        height: 90px;
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(20px);
+        background: rgba(255,255,255,0.15);
+    }
+
+    .call-card .support-icon {
+        background: rgba(16,185,129,0.3);
+        color: #10b981;
+    }
+
+    .email-card .support-icon {
+        background: rgba(59,130,246,0.3);
+        color: #3b82f6;
+    }
+
+    .chat-card .support-icon {
+        background: rgba(245,158,11,0.3);
+        color: #f59e0b;
+    }
+
+    .ticket-card .support-icon {
+        background: rgba(236,72,153,0.3);
+        color: #ec4899;
+    }
+
+    .faq-card .support-icon {
+        background: rgba(17,141,233,0.3);
+        color: #1191e9;
+    }
+
+    .support-time {
+        color: #60a5fa;
+        font-weight: 600;
+    }
+
+    .emergency-card {
+        backdrop-filter: blur(30px);
+        background: rgba(239,68,68,0.15);
+        border: 2px solid rgba(239,68,68,0.4);
+        border-radius: 24px;
+        padding: 3rem;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+</style>
